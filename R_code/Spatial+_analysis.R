@@ -3,8 +3,8 @@
 # Element on the move
 # Author: Ferraro, Corradini, et al.
 # Publication year: 2025
-# Description: Analysis of nitrogen deposition patterns across different 
-#              ungulate migration scenarios
+# Description: Spatial+ analysis of nitrogen deposition patterns across 
+#              different red deer migration scenarios
 # ==============================================================================
 
 # Set working space -------------------------------------------------------
@@ -665,6 +665,11 @@ plots_m150 <- list(
     theme(axis.title.x = element_blank())
 )
 
+
+summary(fit_migr_res_300)
+summary(fit_res_300)
+summary(fit_res_150)
+summary(fit_migr_150)
 
 # Graphical output --------------------------------------------------------
 

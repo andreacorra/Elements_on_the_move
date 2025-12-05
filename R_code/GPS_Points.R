@@ -1,7 +1,14 @@
-#This code had all the dates that start on March 11, which is the latest start date of GPS, This will allow for simultaneous timing. Note, when there are not 2 years, they follow previous tracks
 
+# ==============================================================================
+# Element on the move
+# Description: GPS data preparation
+# ==============================================================================
 
-#Load in Libs
+# This code had all the dates that start on March 11, which is the latest start date of GPS 
+# This will allow for simultaneous timing. 
+# Note, when there are not 2 years, they follow previous tracks
+
+# Load in Libs
 library(dplyr)
 library(lubridate)
 library(tidyverse)
@@ -19,39 +26,37 @@ library(conflicted)
 conflict_prefer("select", "dplyr")
 
 
-
-
 #binding them all and looping through ----
-F1 <- read.csv("~/My Drive/Scholarship/Yale/Projects/Alps Nutrient Translocation/Deer Data for Model_GPS and Parameters/F1_Collar43284_2.csv")
-F2 <- read.csv("~/My Drive/Scholarship/Yale/Projects/Alps Nutrient Translocation/Deer Data for Model_GPS and Parameters/F2_Collar43276_2.csv")
-F4 <- read.csv("~/My Drive/Scholarship/Yale/Projects/Alps Nutrient Translocation/Deer Data for Model_GPS and Parameters/F4_Collar43289_2.csv")
-F5 <- read.csv("~/My Drive/Scholarship/Yale/Projects/Alps Nutrient Translocation/Deer Data for Model_GPS and Parameters/F5_Collar43286_2.csv")
+F1 <- read.csv("~path/to/your/data/directory/F1_Collar43284_2.csv")
+F2 <- read.csv("~path/to/your/data/directory/F2_Collar43276_2.csv")
+F4 <- read.csv("~path/to/your/data/directory/F4_Collar43289_2.csv")
+F5 <- read.csv("~path/to/your/data/directory/F5_Collar43286_2.csv")
 F5[c(11670), c(6:8)] = "NA" #remove negative numbers
 F5[c(5729), c(6:8)] = "NA" #remove negative numbers
-F6 <- read.csv("~/My Drive/Scholarship/Yale/Projects/Alps Nutrient Translocation/Deer Data for Model_GPS and Parameters/F6_Collar43292_2.csv")
-F7 <- read.csv("~/My Drive/Scholarship/Yale/Projects/Alps Nutrient Translocation/Deer Data for Model_GPS and Parameters/F7_Collar43290_2.csv")
-F8 <- read.csv("~/My Drive/Scholarship/Yale/Projects/Alps Nutrient Translocation/Deer Data for Model_GPS and Parameters/F8_Collar43285_2.csv")
-F9 <- read.csv("~/My Drive/Scholarship/Yale/Projects/Alps Nutrient Translocation/Deer Data for Model_GPS and Parameters/F9_Collar43283_2.csv")
-F11 <- read.csv("~/My Drive/Scholarship/Yale/Projects/Alps Nutrient Translocation/Deer Data for Model_GPS and Parameters/F11_46082_All_Deployment_2.csv")
+F6 <- read.csv("~path/to/your/data/directory/F6_Collar43292_2.csv")
+F7 <- read.csv("~path/to/your/data/directory/F7_Collar43290_2.csv")
+F8 <- read.csv("~path/to/your/data/directory/F8_Collar43285_2.csv")
+F9 <- read.csv("~path/to/your/data/directory/F9_Collar43283_2.csv")
+F11 <- read.csv("~path/to/your/data/directory/F11_46082_All_Deployment_2.csv")
 F11[c(3193), c(6:8)] = "NA" #remove negative numbers
 F11[c(4541), c(6:8)] = "NA" #remove negative numbers
-F12 <- read.csv("~/My Drive/Scholarship/Yale/Projects/Alps Nutrient Translocation/Deer Data for Model_GPS and Parameters/F12_43291_All_Deployment_2.csv")
+F12 <- read.csv("~path/to/your/data/directory/F12_43291_All_Deployment_2.csv")
 F12[c(13044), c(6:8)] = "NA" #remove negative numbers
-F13 <- read.csv("~/My Drive/Scholarship/Yale/Projects/Alps Nutrient Translocation/Deer Data for Model_GPS and Parameters/F13_43288_All_Deployment_2.csv")
+F13 <- read.csv("~path/to/your/data/directory/F13_43288_All_Deployment_2.csv")
 F13[c(1742), c(6:8)] = "NA" #remove outlier
-F14 <- read.csv("~/My Drive/Scholarship/Yale/Projects/Alps Nutrient Translocation/Deer Data for Model_GPS and Parameters/F14_Collar47020_2.csv")
-F15 <- read.delim("~/My Drive/Scholarship/Yale/Projects/Alps Nutrient Translocation/Deer Data for Model_GPS and Parameters/F15_Collar27898_rightformat.txt")
-F16 <- read.delim("~/My Drive/Scholarship/Yale/Projects/Alps Nutrient Translocation/Deer Data for Model_GPS and Parameters/F16_Collar27895_rightformat.txt")
+F14 <- read.csv("~path/to/your/data/directory/F14_Collar47020_2.csv")
+F15 <- read.delim("~path/to/your/data/directory/F15_Collar27898_rightformat.txt")
+F16 <- read.delim("~path/to/your/data/directory/F16_Collar27895_rightformat.txt")
 F16<-F16[-c(1), ]
-F17 <- read.delim("~/My Drive/Scholarship/Yale/Projects/Alps Nutrient Translocation/Deer Data for Model_GPS and Parameters/F17_Collar22428_rightformat.txt")
-F18 <- read.delim("~/My Drive/Scholarship/Yale/Projects/Alps Nutrient Translocation/Deer Data for Model_GPS and Parameters/F18_Collar47977_rightformat.txt")
-F19 <- read.delim("~/My Drive/Scholarship/Yale/Projects/Alps Nutrient Translocation/Deer Data for Model_GPS and Parameters/F19_Collar27900_rightformat.txt")
-F20 <- read.delim("~/My Drive/Scholarship/Yale/Projects/Alps Nutrient Translocation/Deer Data for Model_GPS and Parameters/F20_Collar47978_rightformat.txt")
-F21 <- read.delim("~/My Drive/Scholarship/Yale/Projects/Alps Nutrient Translocation/Deer Data for Model_GPS and Parameters/F21_Collar47979_rightformat.txt")
+F17 <- read.delim("~path/to/your/data/directory/F17_Collar22428_rightformat.txt")
+F18 <- read.delim("~path/to/your/data/directory/F18_Collar47977_rightformat.txt")
+F19 <- read.delim("~path/to/your/data/directory/F19_Collar27900_rightformat.txt")
+F20 <- read.delim("~path/to/your/data/directory/F20_Collar47978_rightformat.txt")
+F21 <- read.delim("~path/to/your/data/directory/F21_Collar47979_rightformat.txt")
 F21<-F21[-c(1), ]
 F21[c(6159), c(5:6)] = "NA" #remove outlier
-F22 <- read.delim("~/My Drive/Scholarship/Yale/Projects/Alps Nutrient Translocation/Deer Data for Model_GPS and Parameters/F22_Collar22435_rightformat.txt")
-F23 <- read.delim("~/My Drive/Scholarship/Yale/Projects/Alps Nutrient Translocation/Deer Data for Model_GPS and Parameters/F23_Collar22422_rightformat.txt")
+F22 <- read.delim("~path/to/your/data/directory/F22_Collar22435_rightformat.txt")
+F23 <- read.delim("~path/to/your/data/directory/F23_Collar22422_rightformat.txt")
 
 #futher cleaning
 Old_Deer<-rbind(F1, F2, F4, F5, F6, F7, F8, F9, F11, F12, F13, F14)
@@ -113,7 +118,7 @@ All_Deer_Ordered<-output[order(output$DateTime2_hour ),]
   All_Deer_Ordered.sf <- st_as_sf(All_Deer_Ordered, 
                                 coords = c("Longitude.deg.", "Latitude.deg."), 
                                 crs = 4326) # WGS 84 Coordinate System
-st_write(All_Deer_Ordered.sf, dsn = "~/My Drive/Scholarship/Yale/Projects/Alps Nutrient Translocation/Deer Data for Model_GPS and Parameters/", layer = "All.Deer.NotPadded", driver = "ESRI Shapefile", overwrite_layer = TRUE)
+st_write(All_Deer_Ordered.sf, dsn = "~path/to/your/data/directory/", layer = "All.Deer.NotPadded", driver = "ESRI Shapefile", overwrite_layer = TRUE)
 
   
 
@@ -198,7 +203,7 @@ for (i in 1:length(Under.2Years.IDS)){
 
 NotQuite.2years<-output[order(output$Year, output$Month,output$Day,output$Hour ),]
 
-#st_write(output, dsn = "~/My Drive/Scholarship/Yale/Projects/Alps Nutrient Translocation/Deer Data for Model_GPS and Parameters/", layer = "All.Deer.Output_TEST", driver = "ESRI Shapefile", overwrite_layer = TRUE)
+#st_write(output, dsn = "~path/to/your/data/directory/", layer = "All.Deer.Output_TEST", driver = "ESRI Shapefile", overwrite_layer = TRUE)
 
 
 
@@ -260,16 +265,20 @@ NotQuite.1Year<-output[order(output$Year, output$Month,output$Day,output$Hour ),
 #output----
 All.Deer.Output<-rbind(NotQuite.2years, NotQuite.1Year)
 All.Deer.Output<-All.Deer.Output[order(All.Deer.Output$Year, All.Deer.Output$Month, All.Deer.Output$Day,All.Deer.Output$Hour, All.Deer.Output$New_AID),]
-st_write(All.Deer.Output, dsn = "~/My Drive/Scholarship/Yale/Projects/Alps Nutrient Translocation/Deer Data for Model_GPS and Parameters/", layer = "All.Deer.Output_Dec2024_NewDate", driver = "ESRI Shapefile", overwrite_layer = TRUE)
+st_write(All.Deer.Output, dsn = "~path/to/your/data/directory/", layer = "All.Deer.Output_Dec2024_NewDate", driver = "ESRI Shapefile", overwrite_layer = TRUE)
 
 
 #resident deer -----
 Resident.Deer.Output<-All.Deer.Output[All.Deer.Output$New_AID %in% c(22428.1, 22428.2, 27895.1,  27895.2, 27898.1, 27898.2, 43286.1, 43286.2, 43288.1, 43288.2, 43290.1, 43290.2, 43291.1, 43291.2, 22422, 47978, 47979),]
-st_write(Resident.Deer.Output, dsn = "~/My Drive/Scholarship/Yale/Projects/Alps Nutrient Translocation/Deer Data for Model_GPS and Parameters/", layer = "Resident.Deer_Feb2025", driver = "ESRI Shapefile", overwrite_layer = TRUE)
+st_write(Resident.Deer.Output, dsn = "~path/to/your/data/directory/", layer = "Resident.Deer_Feb2025", driver = "ESRI Shapefile", overwrite_layer = TRUE)
 
 
 #Migratory deer -----
 
 Migratory.Deer.Output<-All.Deer.Output[All.Deer.Output$New_AID %in% c(22422, 22435, 27900, 43283.1, 43283.2, 43284, 43289.1, 43289.2, 43292.1,43292.2, 46082.1, 46082.2, 47977),]
-st_write(Migratory.Deer.Output, dsn = "~/My Drive/Scholarship/Yale/Projects/Alps Nutrient Translocation/Deer Data for Model_GPS and Parameters/", layer = "Migraoty.Deer_Feb2025", driver = "ESRI Shapefile", overwrite_layer = TRUE)
+st_write(Migratory.Deer.Output, dsn = "~path/to/your/data/directory/", layer = "Migraoty.Deer_Feb2025", driver = "ESRI Shapefile", overwrite_layer = TRUE)
 
+
+# ==============================================================================
+# END SCRIPT
+# ==============================================================================

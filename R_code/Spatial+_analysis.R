@@ -1,8 +1,6 @@
 
 # ==============================================================================
 # Element on the move
-# Author: Ferraro, Corradini, et al.
-# Publication year: 2025
 # Description: Spatial+ analysis of nitrogen deposition patterns across 
 #              different red deer migration scenarios
 # ==============================================================================
@@ -25,8 +23,7 @@ library(performance)
 library(gratia)
 library(DHARMa)
 
-# dir <- "path/to/your/data/directory/"  # Update this path
-dir <- "C:/Users/corradinia/R/Elements_on_the_move"
+dir <- "path/to/your/data/directory/"  # Update this path
 utm_crs <- "+proj=utm +zone=32 +datum=WGS84 +units=m +no_defs +type=crs"
 
 ## load raster stack with net nitrogen values as derived from NetLogo

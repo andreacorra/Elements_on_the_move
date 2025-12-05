@@ -1,7 +1,10 @@
-##Model Output Verification Code
-#Ferraro and Corradini et al., 2026
 
+# ==============================================================================
+# Element on the move
+# Description: Model Output Verification Code
+# ==============================================================================
 
+# Load in Libs
 library(ggplot2)
 library(dplyr)
 library(cowplot)
@@ -13,7 +16,7 @@ patagonia_palette <- c(
   "#8E7DBE", "#5A3E85"
 )
 
-setwd("/Users/kristyferraro/My Drive/Scholarship/Yale/Projects/Alps Nutrient Translocation/Data")
+setwd("path/to/your/data/directory")
 
 
 #-----Mean Body N -----
@@ -568,3 +571,8 @@ print(dailyn_with_legend)
 
 quartz()
 dailyn_with_legend
+
+
+# ==============================================================================
+# END SCRIPT
+# ==============================================================================

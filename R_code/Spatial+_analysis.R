@@ -761,16 +761,19 @@ slope_plots <- annotate_figure(
 
 # Distance to roads effects (subset comparison)
 roads_plots <- ggarrange(
-  plots_mr300$dist_rd,  # A: Migrants + Residents 300
-  plots_r300$dist_rd,   # B: Residents 300
-  ncol = 2, nrow = 1, 
-  labels = c("A", "B")
+  plots_m150$dist_rd,   # A: Migrants 150
+  plots_r150$dist_rd,   # B: Residents 150
+  plots_mr300$dist_rd,  # C: Migrants + Residents 300
+  plots_r300$dist_rd,   # D: Residents 300
+  ncol = 2, nrow = 2, 
+  labels = c("A", "B", "C", "D")
 )
 roads_plots <- annotate_figure(
   roads_plots, 
   top = text_grob("Distance from Roads", face = "bold", size = 14),
-  bottom = legend_subset
+  bottom = legend
 )
+
 
 # ==============================================================================
 # END SCRIPT

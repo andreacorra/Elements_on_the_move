@@ -84,7 +84,7 @@ to setup
 
 
   if Model = "Migrant_150" [
-    set GPS-tracks gis:load-dataset "Resident_Deer.shp"
+    set GPS-tracks gis:load-dataset "Migratory_Deer.shp"
     ;; gis:load-coordinate-system "Resident_Deer.prj" line removed as coordinates are now local planar
     set row-nr 0
     set nr-of-deer 13 ] ;Note - this value should be replcaed with the number of GPS tracks for the simulation

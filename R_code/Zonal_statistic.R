@@ -24,18 +24,17 @@ library(geosphere)
 library(rlang) # for !!sym()
 
 dir <- "path/to/your/data/directory/"  # Update this path
-utm_crs <- "+proj=utm +zone=32 +datum=WGS84 +units=m +no_defs +type=crs"
 
 ## Nitrogen rasters
 rasters <- list(
-  "M+R_300" = readRDS(file.path(dir, "data/migrate_and_resident_nitrogen.rds")),
-  "M_150"   = readRDS(file.path(dir, "data/migration_150_nitrogen.rds")),
-  "R_150"   = readRDS(file.path(dir, "data/resident_150_nitrogen.rds")),
-  "R_300"   = readRDS(file.path(dir, "data/resident_300_nitrogen.rds"))
+  "M+R_300" = readRDS(file.path(dir, "data_anonymized/migrate_and_resident_nitrogen.rds")),
+  "M_150"   = readRDS(file.path(dir, "data_anonymized/migration_150_nitrogen.rds")),
+  "R_150"   = readRDS(file.path(dir, "data_anonymized/resident_150_nitrogen.rds")),
+  "R_300"   = readRDS(file.path(dir, "data_anonymized/resident_300_nitrogen.rds"))
 )
 
 ## Environmental rasters
-spatial_covariates <- readRDS(file.path(dir, "data/spatial_covariates.rds"))
+spatial_covariates <- readRDS(file.path(dir, "data_anonymized/spatial_covariates.rds"))
 dem   <- spatial_covariates$elevation
 slope <- spatial_covariates$slope
 tcd   <- spatial_covariates$tcd

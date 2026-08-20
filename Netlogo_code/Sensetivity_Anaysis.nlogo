@@ -62,8 +62,8 @@ to setup
   set  land-use-raster gis:load-dataset "Alps_landuse_clipped_V3.asc"
 
 
-    set GPS-tracks  gis:load-dataset "All.Deer.Output_Dec2024_NewDate.shp"
-    gis:load-coordinate-system "All.Deer.Output_Dec2024_NewDate.prj"
+    set GPS-tracks  gis:load-dataset "All_Deer.shp"
+    ;; gis:load-coordinate-system "All_Deer.prj"
     set row-nr 0
     set nr-of-deer 30
 

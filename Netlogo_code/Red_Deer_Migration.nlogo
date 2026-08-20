@@ -64,31 +64,31 @@ to setup
 
   if Model = "Migrant_and_Resident_300" [
     set GPS-tracks  gis:load-dataset "All_Deer.shp"
-    gis:load-coordinate-system "All_Deer.prj"
+    ;; gis:load-coordinate-system "All_Deer.prj" line removed as coordinates are now local planar
     set row-nr 0
-    set nr-of-deer length (real-deers-list) ]
+    set nr-of-deer 30 ] ;Note - this value should be replcaed with the number of GPS tracks for the simulation
 
 
   if Model = "Resident_150" [
     set GPS-tracks  gis:load-dataset "Resident_Deer.shp"
-    gis:load-coordinate-system "Resident_Deer.prj"
+    ;; gis:load-coordinate-system "Resident_Deer.prj" line removed as coordinates are now local planar
     set row-nr 0
-    set nr-of-deer length (real-deers-list) ]
+    set nr-of-deer 17 ] ;Note - this value should be replcaed with the number of GPS tracks for the simulation
 
 
   if Model = "Resident_300"[
     set GPS-tracks gis:load-dataset "Resident_Deer.shp"
-    gis:load-coordinate-system "Resident_Deer.prj"
+    ;; gis:load-coordinate-system "Resident_Deer.prj" line removed as coordinates are now local planar
     set row-nr 0
-    set nr-of-deer length (real-deers-list)
-  ]
+    set nr-of-deer 17 ] ;Note - this value should be replcaed with the number of GPS tracks for the simulation
+
 
   if Model = "Migrant_150" [
     set GPS-tracks gis:load-dataset "Resident_Deer.shp"
-    gis:load-coordinate-system "Resident_Deer.prj"
+    ;; gis:load-coordinate-system "Resident_Deer.prj" line removed as coordinates are now local planar
     set row-nr 0
-    set nr-of-deer length (real-deers-list)
-  ]
+    set nr-of-deer 13 ] ;Note - this value should be replcaed with the number of GPS tracks for the simulation
+
 
   let width ceiling (gis:width-of winter-N-raster  / 2)
   let height ceiling (gis:height-of winter-N-raster  / 2)
